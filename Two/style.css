@@ -1,0 +1,39 @@
+
+.container {
+    width: 1000px;
+    height: 800px;
+    border: 5px solid black;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+    margin-top: 2rem;
+}
+
+.one{
+    display: flex; 
+    text-indent: 0.57rem; 
+    justify-content: center;
+}
+
+.two {
+    width: 600px;
+    height: 280px;
+    background-color: aliceblue;
+    margin: auto;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+    margin-top: 1.5rem;
+}
+
+h1 {
+    font-family: papyrus;
+}
+
+button {
+    font-size: 1.5rem;
+    font-family: cursive;
+    color: white;
+    border-radius: 15px;
+    background-color: rgb(77, 153, 174);
+}
