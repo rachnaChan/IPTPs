@@ -1,0 +1,64 @@
+:root {
+    --mainGreen: green;
+    --mainRed: red;
+    --lightBlueGrey: #c3d1d7;
+    --mainBlack: #333333;
+}
+
+body {
+    margin: auto;
+    background-color: rgb(235, 235, 235);
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.first {
+    width: 40%;
+    height: auto;
+    border: 5px solid black;
+    text-align: center;
+    background-color: aliceblue;
+}
+
+.first .second {
+    font-size: 4.2rem;
+    font-weight: 600;
+    font-family: Helvetica;
+    color: black;
+    margin: 100px 0 20px 0;
+}
+
+.first .counters {
+    font-size: 4.2rem;
+    font-weight: 600;
+    color: rgba(18, 79, 36, 0.7);
+    font-family: Helvetica;
+}
+
+.first > button {
+    background-color: rgba(205, 210, 214, 0.7);
+    color: black;
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    border-color: #09659b;
+    margin: 50px 5px 150px 5px;
+    box-shadow: 0 0.2rem 0.5rem rgba(156, 135, 135, 0.9);
+}
+
+#nextBtn:hover {
+    background: var(--mainGreen);
+}
+
+#prevBtn:hover {
+    background: var(--mainRed);
+}
+
+#midBtn:hover {
+    background: var(--lightBlueGrey);
+}

@@ -1,0 +1,92 @@
+:root {
+    --mainGreen: green;
+    --mainRed: red;
+}
+
+body {
+    background-color: aliceblue
+}
+
+.container {
+    width: 1000px;
+    height: 800px;
+    margin: auto;
+    margin-top: 5%;
+    justify-content: center;
+    align-items: center;
+}
+
+.color {
+    text-align: center;
+    width: 70%;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: Helvetica;
+}
+
+.color .first {
+    background-color: rgb(30, 2, 2);
+    height: 100px;
+}
+
+.first>h2 {
+    color: aliceblue;
+    padding-top: 10px;
+}
+
+.first .result {
+    color: aliceblue;
+}
+
+.color .button {
+
+    align-items: center;
+    justify-content: center;
+    height: 800px;
+    background-color: aliceblue;
+}
+
+.item {
+    display: flex;
+    flex-wrap: wrap;
+    height: 300px;
+    justify-content: end;
+    background-color: white;
+    border: 5px outset grey;
+    overflow-y: scroll;
+}
+
+.items {
+    width: 100%;
+    display: flex;
+    margin: 15px 50px 15px 50px;
+    border: 1px dotted grey;
+    background-color: aliceblue;
+
+}
+
+#generates,
+#reset {
+    border: 4px outset black;
+    width: 100px;
+    height: 50px;
+    font-family: Helvetica;
+    border-radius: 10px;
+    margin: 150px 15px 150px 15px;
+}
+
+#generates:hover {
+    background: var(--mainGreen);
+}
+
+#reset:hover {
+    background: var(--mainRed);
+}
+
+.items .box {
+    height: 10px;
+    width: 10px;
+    margin-top: 3px;
+    margin-left: 10px;
+    border: 2px solid black;
+}

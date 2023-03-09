@@ -1,0 +1,85 @@
+body {
+    margin: auto;
+    background-color: rgba(159, 197, 232, .2);
+}
+
+.bar {
+    display: none;
+    width: 300px;
+    height: auto;
+    padding: 10px 0 1px 0;
+    background-color: white;
+    border: 3px double rgb(174, 185, 194);
+    /* border-right: 2px solid rgba(159, 197, 232, .8);
+    border-bottom: 2px solid rgba(159, 197, 232, .8); */
+}
+
+.responed {
+    display: block;
+}
+
+.bar > div {
+    font-size: xx-large;
+    font-family: Helvetica;
+}
+
+.bar .content {
+    margin: 20px 0 0 -40px;
+}
+
+.bar .content > li {
+    margin: auto;
+    padding: 10px;
+    font-size: x-large;
+}
+
+.bar .content > li > a {
+    padding: 10px 230px 10px 25px;
+    text-decoration: none;
+    color: grey;
+}
+
+.bar .content > li > a:hover {
+    color: rgba(86, 88, 90, 0.9);
+}
+
+.bar .content > li:hover {
+    background-color: aliceblue;
+}
+
+.bar .head {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px 0 10px;
+}
+
+.bar .head > div > a > i {
+    color: red;
+}
+
+.media {
+    margin-top: 90%;
+    margin-left: -40px;
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}
+
+.media > li {
+    color: rgb(238, 233, 243);
+    margin: 0 3px 0 3px;
+    font-size: x-large;
+}
+
+.media > li > a > i:hover {
+    transform: scale(1.1);
+}
+
+.media > li > a > i {
+    color: rgba(6, 95, 168, 0.9);
+}
+
+.list-menu {
+    font-size: x-large;
+    padding: 10px 0 0 10px;
+}
