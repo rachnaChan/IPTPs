@@ -1,0 +1,187 @@
+.loading {
+    justify-content: center;
+    align-items: center;
+}
+ 
+.zero {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(176, 204, 225, 0.3);
+    border-radius: 50%;
+    border-top-color: rgb(210, 181, 197);
+    animation: spin 1s ease-in-out infinite;
+    -webkit-animation: spin 1s ease-in-out infinite;
+}
+
+.first {
+        display: flex;
+        justify-content: center;
+        background-color: whitesmoke;
+}
+
+.header-add {
+    background-color: rgb(181, 217, 231);
+}
+
+.new {
+    height: 93vh;
+    width: 300px;
+    position: fixed;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: rgb(234, 199, 226);
+}
+
+.new>div {
+    text-align: center;
+    color: black;
+    margin-bottom: 20px;
+    font-size: large;
+    padding-top: 10px;
+    height: 30px;
+    border-style: double;
+    border-radius: 5px;
+}
+
+.new input[type=text] {
+    width: 100%;
+    border: 1px solid gray;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px;
+    transition: .2s;
+}
+
+.new input[type=text]:focus {
+    border-color: rgb(245, 48, 48);
+    box-shadow: 0 0 8px 0 rgb(246, 61, 85);
+}
+
+.new .edit_book {
+    visibility: hidden;
+}
+
+.add_book, .edit_book {
+    color: black;
+    border-style: outset;
+    height: 25px;
+    width: 50px;
+    font: bold 15 px arial, sans-serif;
+    text-shadow: none;
+    height: 30px;
+    margin-top: 10px;
+    border-radius: 5px;
+    background-color: rgb(236, 139, 176);
+}
+
+.edit_book {
+    background-color: rgb(185, 177, 177);
+}
+
+.home {
+    height: auto;
+    width: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 350px;
+}
+
+.home .book-info {
+    text-align: center;
+    font-size: larger;
+    height: 50px;
+    width: 780px;
+    color: black;
+    background-color: rgb(227, 227, 224);
+    position: sticky;
+    padding: 2px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border-style: dashed;
+}
+
+.home .items {
+    text-align: center;
+    width: 23%;
+    margin: 1%;
+    margin-left: 1%;
+    box-shadow: rgba(56, 193, 231, 0.2) 0px 4px 16px;
+    border-radius: 15px;
+}
+
+.items>img {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.items .name,
+.price,
+.category {
+    text-align: start;
+    margin-left: 20px;
+    padding-top: 10px;
+}
+
+.items>button {
+    text-align: start;
+}
+
+.button {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.button .editBtn,
+.deletBtn {
+    border-radius: 5px;
+    background-color: rgb(86, 164, 233);
+    color: white;
+    border-style: outset;
+    height: 30px;
+}
+
+.deletBtn {
+    margin-left: 10px;
+    background-color: rgba(239, 54, 54);
+}
+
+.edit_book {
+    margin-left: -55px;
+    text-align: center;
+    width: 80px;
+}
+
+.items>img {
+    height: 90px;
+}
+
+@keyframes spin {
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+.btn {
+    margin: 5px 0 15px 0;
+    background-color: rgba(244, 67, 54, .9);
+}
+
+.btn>a {
+    color: white;
+    text-decoration: none;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:100);
+
+h1 {
+    font: 2em 'Roboto', sans-serif;
+    margin-bottom: 40px;
+}

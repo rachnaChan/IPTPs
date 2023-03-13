@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="shortcut icon" href="zmff.jpg" type="image/x-icon">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <title>THREE : Book Store </title>
+    <style>
+        .loading {
+    justify-content: center;
+    align-items: center;
+}
+ 
+.zero {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(176, 204, 225, 0.3);
+    border-radius: 50%;
+    border-top-color: rgb(210, 181, 197);
+    animation: spin 1s ease-in-out infinite;
+    -webkit-animation: spin 1s ease-in-out infinite;
+}
+
+.first {
+        display: flex;
+        justify-content: center;
+        background-color: whitesmoke;
+}
+
+.header-add {
+    background-color: rgb(181, 217, 231);
+}
+
+.new {
+    height: 93vh;
+    width: 300px;
+    position: fixed;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: rgb(234, 199, 226);
+}
+
+.new>div {
+    text-align: center;
+    color: black;
+    margin-bottom: 20px;
+    font-size: large;
+    padding-top: 10px;
+    height: 30px;
+    border-style: double;
+    border-radius: 5px;
+}
+
+.new input[type=text] {
+    width: 100%;
+    border: 1px solid gray;
+    border-radius: 4px;
+    margin: 8px 0;
+    outline: none;
+    padding: 8px;
+    transition: .2s;
+}
+
+.new input[type=text]:focus {
+    border-color: rgb(245, 48, 48);
+    box-shadow: 0 0 8px 0 rgb(246, 61, 85);
+}
+
+.new .edit_book {
+    visibility: hidden;
+}
+
+.add_book, .edit_book {
+    color: black;
+    border-style: outset;
+    height: 25px;
+    width: 50px;
+    font: bold 15 px arial, sans-serif;
+    text-shadow: none;
+    height: 30px;
+    margin-top: 10px;
+    border-radius: 5px;
+    background-color: rgb(236, 139, 176);
+}
+
+.edit_book {
+    background-color: rgb(185, 177, 177);
+}
+
+.home {
+    height: auto;
+    width: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 350px;
+}
+
+.home .book-info {
+    text-align: center;
+    font-size: larger;
+    height: 50px;
+    width: 780px;
+    color: black;
+    background-color: rgb(227, 227, 224);
+    position: sticky;
+    padding: 2px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border-style: dashed;
+}
+
+.home .items {
+    text-align: center;
+    width: 23%;
+    margin: 1%;
+    margin-left: 1%;
+    box-shadow: rgba(56, 193, 231, 0.2) 0px 4px 16px;
+    border-radius: 15px;
+}
+
+.items>img {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.items .name,
+.price,
+.category {
+    text-align: start;
+    margin-left: 20px;
+    padding-top: 10px;
+}
+
+.items>button {
+    text-align: start;
+}
+
+.button {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.button .editBtn,
+.deletBtn {
+    border-radius: 5px;
+    background-color: rgb(86, 164, 233);
+    color: white;
+    border-style: outset;
+    height: 30px;
+}
+
+.deletBtn {
+    margin-left: 10px;
+    background-color: rgba(239, 54, 54);
+}
+
+.edit_book {
+    margin-left: -55px;
+    text-align: center;
+    width: 80px;
+}
+
+.items>img {
+    height: 90px;
+}
+
+@keyframes spin {
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+.btn {
+    margin: 5px 0 15px 0;
+    background-color: rgba(244, 67, 54, .9);
+}
+
+.btn>a {
+    color: white;
+    text-decoration: none;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:100);
+
+h1 {
+    font: 2em 'Roboto', sans-serif;
+    margin-bottom: 40px;
+}
+    </style>
+
+</head>
+
+<body>
+    <div class="loading">
+        <div class="zero"></div>
+    </div>
+    <div class="first">
+        <form autocomplete="off" onsubmit="onFormSubmit()">
+            <div class="new">
+                <div class="header-add">Add book's information!!</div>
+
+                <label for="name_book">Name</label>
+                <input type="text" name="name" id="name_book" placeholder="The mountain is you"/>
+                <label for="category_book">Category</label>
+                <input type="text" name="category" id="category_book" placeholder="self-sabotage"/>
+                <label for="price_book">Price</label>
+                <input type="text" name="price_book" id="price_book" placeholder="xxx-xxx-xxx riel"/>
+
+                <button type="submit" class="add_book">Add</button>
+
+            </div>
+        </form>
+        <div class="home" id="add_items">
+            <div class="book-info">Books</div>
+        </div>
+        <!-- <script src="script.js"></script> -->
+        <script>
+            var selectedRow = null;
+let header = document.getElementsByClassName("header-add")[0];
+
+let books = [{}];
+const getB = localStorage.getItem('books');
+const dataB = JSON.parse(getB);
+
+let results = [];
+let output = '';
+
+var loading = (value) => {
+    if (value == 'true') {
+        setTimeout(() => {
+
+        }, 1000)
+        document.getElementsByClassName('loading')[0].style.display = 'flex'
+        document.getElementsByClassName('first')[0].style.display = 'none'
+    } else {
+        document.getElementsByClassName('loading')[0].style.display = 'none';
+        document.getElementsByClassName('first')[0].style.display = 'flex';    
+    }
+}
+loading("true");
+
+fetch('https://jsonplaceholder.typicode.com/photos').then(async(res) => {
+    results = await res.json();
+    var title = '';
+    for (result in results) {
+        output +=
+            `<div class="items">` +
+            `<img src="${results[result].url}" alt="#">` +
+            `<div class="name">Title : ${results[result].title.toString().substring(0, 10)}...</div>` +
+            `<div class="price">Id : ${results[result].id}</div>` +
+            `<div class="category">Album ID : ${results[result].albumId}</div>` +
+            `<button class="btn">` +
+            `<a href="fetch-api.html?bookid=${parseInt(result)+1}">see more</a>` +
+            `</button>` +
+            `</div>`;
+    }
+    document.getElementById("add_items").innerHTML += output;
+    setTimeout(() => {
+        loading("false");
+    }, 100)
+});
+
+function onFormSubmit(e) {
+    Events.preventDefault();
+    var formData = readFormData();
+    if (selectedRow === null) {
+        insertNewRecord(formData);
+    } else {
+        updateRecord(formData);
+    }
+    resetForm();
+}
+
+
+document.querySelector('.add_book').placeholder = '';
+
+
+function readFormData() {
+    var formData = {};
+    formData["name_book"] = document.getElementById("name_book").value;
+    formData["price_book"] = document.getElementById("price_book").value;
+    formData["category_book"] = document.getElementById("category_book").value;
+
+    return formData;
+}
+
+
+function insertNewRecord(data) {
+    const getdata = localStorage.getItem('books');
+    let databookss = JSON.parse(getdata);
+
+    books = Object.assign([{}], databookss);
+    let x;
+    if (databookss == null) {
+        x = 0
+    } else {
+        x = databookss.length;
+    }
+    const book = {
+        name: `${data.name_book}`,
+        price: `${data.price_book}`,
+        category: `${data.category_book}`
+    };
+    books[x] = book;
+    localStorage.setItem('books', JSON.stringify(books));
+    let databooks = getbooks();
+
+    document.getElementById("add_items").innerHTML +=
+        `<div class="items">` +
+        `<img src="zmff.jpg" alt="#">` +
+        `<div class="name">Name : ${databooks[x].name}</div>` +
+        `<div class="price">Price : ${databooks[x].price} riels</div>` +
+        `<div class="category">Category : ${databooks[x].category}</div>` +
+        `</div>`;
+}
+
+function updateRecord(formData) {
+    document.getElementsByClassName("name")[selectedRow].innerHTML = "Name : " + formData.name_book;
+    document.getElementsByClassName("price")[selectedRow].innerHTML = "Price : " + formData.price_book + " riels";
+    document.getElementsByClassName("category")[selectedRow].innerHTML = "Category : " + formData.category_book;
+    document.getElementsByClassName("edit_book")[0].style.visibility = 'hidden';
+    document.getElementsByClassName("add_book")[0].style.visibility = 'visible';
+
+    let bookss = getbooks();
+    const bookUpdate = {
+        name: `${formData.name_book}`,
+        price: `${formData.price_book}`,
+        category: `${formData.category_book}`
+    };
+
+    books = Object.assign([{}], bookss);
+    books[selectedRow] = bookUpdate;
+    localStorage.setItem('books', JSON.stringify(books));
+
+    document.getElementsByClassName("header-add")[0].innerHTML = "Add book's information!!";
+    selectedRow = null;
+}
+
+
+function resetForm() {
+    document.getElementById('name_book').value = '';
+    document.getElementById('price_book').value = '';
+    document.getElementById('category_book').value = '';
+}
+
+function getbooks() {
+    const getbooks = localStorage.getItem('books');
+    let databooks = JSON.parse(getbooks);
+
+    return databooks;
+}
+        </script>
+    </div>
+</body>
+
+</html>
