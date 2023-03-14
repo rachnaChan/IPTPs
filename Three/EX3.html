@@ -257,7 +257,7 @@ fetch('https://jsonplaceholder.typicode.com/photos').then(async(res) => {
             `<div class="price">Id : ${results[result].id}</div>` +
             `<div class="category">Album ID : ${results[result].albumId}</div>` +
             `<button class="btn">` +
-            `<a href="fetch-api.html?bookid=${parseInt(result)+1}">see more</a>` +
+            `<a href="/detail?bookid=${parseInt(result)+1}">see more</a>` +
             `</button>` +
             `</div>`;
     }
